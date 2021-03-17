@@ -2,7 +2,8 @@
 #+PROPERTY: header-args :tangle config.py
 
 * Table of Contets :toc:
-- [[#about-qtile][About Qtile]]
+- [[#about-this-config][About this config]]
+- [[#license][License]]
 - [[#todos][TODOS]]
 - [[#imports][Imports]]
 - [[#function-to-get-number-of-monitors][Function to get number of monitors]]
@@ -20,7 +21,9 @@
 - [[#hooks][Hooks]]
 - [[#etc][etc]]
 
-* About Qtile
+* About this config
+A work in progress. The config is generated from this org file using ~org-babel-tangle~ in emacs.
+* License
 Copyright (c) 2010 Aldo Cortesi
 Copyright (c) 2010, 2014 dequis
 Copyright (c) 2012 Randall Ma
