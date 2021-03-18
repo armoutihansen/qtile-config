@@ -37,9 +37,11 @@ browser = os.environ["BROWSER"]
 editor = terminal + " -e " + os.environ["EDITOR"]
 reader = os.environ["READER"]
 file_manager = terminal + " -e ranger"
-email = terminal + " -e neomutt"
+# email = terminal + " -e neomutt"
+email = "emacsclient -c -a 'emacs' --eval '(mu4e)'"
 calender = terminal + " -e calcurse"
-rss = terminal + " -e newsboat"
+# rss = terminal + " -e newsboat"
+rss = "emacsclient -c -a 'emacs' --eval '(elfeed)'"
 
 colors = [
     ["#282a36", "#282a36"],

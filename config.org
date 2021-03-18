@@ -1,7 +1,6 @@
 #+TITLE: My Qtile Config
-#+PROPERTY: header-args :tangle config.py
 
-* Table of Contets :toc:
+* Table of Contets                                                              :toc:
 - [[#about-this-config][About this config]]
 - [[#license][License]]
 - [[#todos][TODOS]]
@@ -42,13 +41,13 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-* TODO TODOS
+* TODO TODOS                                                                    :qtile_config:
 - Swallowing: Fix sxiv non-swallowing, No-float-swallow, No-swallow-list
 - Startup hook preventing empty widgets on startup relying on internet
 - Location variable in weather widget
 - Implement KeyChords and vim-like mode line/airline
 * Imports
-#+begin_src python
+#+begin_src python :tangle config.py
 import os
 # import socket
 import subprocess
@@ -72,9 +71,8 @@ from libqtile.config import (
 )
 from libqtile.lazy import lazy
 #+end_src
-
 * Function to get number of monitors
-#+begin_src python
+#+begin_src python :tangle config.py
 def get_monitors():
     xr = subprocess.check_output('xrandr --query | grep " connected"', shell=True).decode().split('\n')
     monitors = len(xr) - 1 if len(xr) > 2 else len(xr)
@@ -87,19 +85,21 @@ monitors = get_monitors()
 #+end_src
 
 * Apps
-#+begin_src python
+#+begin_src python :tangle config.py
 home = os.environ["HOME"]
 terminal = os.environ["TERMINAL"]
 browser = os.environ["BROWSER"]
 editor = terminal + " -e " + os.environ["EDITOR"]
 reader = os.environ["READER"]
 file_manager = terminal + " -e ranger"
-email = terminal + " -e neomutt"
+# email = terminal + " -e neomutt"
+email = "emacsclient -c -a 'emacs' --eval '(mu4e)'"
 calender = terminal + " -e calcurse"
-rss = terminal + " -e newsboat"
+# rss = terminal + " -e newsboat"
+rss = "emacsclient -c -a 'emacs' --eval '(elfeed)'"
 #+end_src
 * Colors
-#+begin_src python
+#+begin_src python :tangle config.py
 colors = [
     ["#282a36", "#282a36"],
     ["#ff5555", "#ff5555"],
@@ -113,12 +113,12 @@ colors = [
 ]
 #+end_src
 * Fonts
-#+begin_src python
+#+begin_src python :tangle config.py
 font = "Mononoki Nerd Font"
 fontsize = 11
 #+end_src
 * Functions that get content for widgets
-#+begin_src python
+#+begin_src python :tangle config.py
 def get_todos():
     mail_todos = int(
         subprocess.check_output(
@@ -300,7 +300,7 @@ def get_cpu():
     return "CPU: " + str(freq) + "GHz [" + str(percent) + "%]"
 #+end_src
 * Widgets
-#+begin_src python
+#+begin_src python :tangle config.py
 mail = widget.GenPollText(
     foreground=colors[1],
     func=get_mail,
@@ -441,7 +441,7 @@ net = widget.Net(format="Traffic:{down} ↓↑ {up}")
 wlan = widget.Wlan(interface="wlp3s0", format="Network: {essid} [{percent:2.0%}]")
 #+end_src
 * Layout theme
-#+begin_src python
+#+begin_src python :tangle config.py
 """ LAYOUT THEME """
 layout_theme = {
     "border_width": 3,
@@ -451,7 +451,7 @@ layout_theme = {
 }
 #+end_src
 * Keys
-#+begin_src python
+#+begin_src python :tangle config.py
 mod = "mod4"
 
 keys = [
@@ -716,7 +716,7 @@ for i in range(monitors):
     keys.extend([EzKey("M-A-%s" % i, lazy.window.toscreen(i))])
 #+end_src
 * Layouts
-#+begin_src python
+#+begin_src python :tangle config.py
 layouts = [
     layout.MonadTall(single_margin=0, single_border_width=0, **layout_theme),
     layout.MonadWide(single_margin=0, single_border_width=0, **layout_theme),
@@ -734,7 +734,7 @@ layouts = [
 #+end_src
 
 * Defaults
-#+begin_src python
+#+begin_src python :tangle config.py
 widget_defaults = dict(
     font=font, fontsize=fontsize, padding=2, background=colors[0], foreground=colors[8]
 )
@@ -743,7 +743,7 @@ extension_defaults = widget_defaults.copy()
 #+end_src
 
 * Screens
-#+begin_src python
+#+begin_src python :tangle config.py
 screens = []
 
 for monitor in range(monitors):
@@ -902,7 +902,7 @@ for monitor in range(monitors):
         )
 #+end_src
 * Mouse
-#+begin_src python
+#+begin_src python :tangle config.py
 # Drag floating layouts.
 mouse = [
     EzDrag(
@@ -914,7 +914,7 @@ mouse = [
 #+end_src
 
 * Hooks
-#+begin_src python
+#+begin_src python :tangle config.py
 @hook.subscribe.startup
 def hide_bottom_bar():
     for screen in qtile.screens:
@@ -1029,7 +1029,7 @@ def hide_chord_bar():
     bar.show(False)
 #+end_src
 * etc
-#+begin_src python
+#+begin_src python :tangle config.py
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 main = None  # WARNING: this is deprecated and will be removed soon
