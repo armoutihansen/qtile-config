@@ -23,13 +23,13 @@
 * About this config
 A work in progress. The config is generated from this org file using ~org-babel-tangle~ in emacs.
 * License
-Copyright (c) 2010 Aldo Cortesi
-Copyright (c) 2010, 2014 dequis
-Copyright (c) 2012 Randall Ma
-Copyright (c) 2012-2014 Tycho Andersen
-Copyright (c) 2012 Craig Barnes
-Copyright (c) 2013 horsik
-Copyright (c) 2013 Tao Sauvage
+- Copyright (c) 2010 Aldo Cortesi
+- Copyright (c) 2010, 2014 dequis
+- Copyright (c) 2012 Randall Ma
+- Copyright (c) 2012-2014 Tycho Andersen
+- Copyright (c) 2012 Craig Barnes
+- Copyright (c) 2013 horsik
+- Copyright (c) 2013 Tao Sauvage
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
